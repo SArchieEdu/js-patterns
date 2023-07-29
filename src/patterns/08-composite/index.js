@@ -3,8 +3,8 @@ export class Child {
     this.value = value;
   }
 
-  getSum () {
-    // todo: add implementation
+  getSum() {
+    return this.value;
   }
 }
 
@@ -13,8 +13,8 @@ export class Parent {
     this.values = values;
   }
 
-  getSum () {
-    // todo: add implementation
+  getSum() {
+    return this.values.reduce((acc, value) => acc + value.getSum(), 0)
   }
 }
 
