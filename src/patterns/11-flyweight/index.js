@@ -1,5 +1,7 @@
 class Flyweight {
-  // todo: add implementation
+  constructor(sharedState) {
+    this.sharedState = sharedState;
+  }
 }
 
 export class ProductsStore {
@@ -8,11 +10,18 @@ export class ProductsStore {
 
   addProduct (productData = {}) {
     const productFlyweight = this.getOrCreateFlyweight(productData.info);
+    productData.info = productFlyweight;
 
-    // todo: add implementation
+    this.products.push(productData);
   }
 
   getOrCreateFlyweight (info = {}) {
-    // todo: add implementation
+    const key = Object.values(info).join("_");
+
+    if (!Object.keys(this.flyweights).includes(key)) {
+      this.flyweights[key] = new Flyweight(info);
+    }
+
+    return this.flyweights[key];
   }
 }
