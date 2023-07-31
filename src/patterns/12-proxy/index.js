@@ -10,14 +10,18 @@ export class User {
 }
 
 export class ProxyUser {
-  rights = [];
+  rights = ["admin"];
 
-  constructor() {
-    // todo: add implementation
+  constructor(user) {
+    this.user = user;
   }
 
   write () {
-    // todo: add implementation
+    if (!this.user.rights.includes(...this.rights)) {
+      return "user does not have permissions to write";
+    }
+
+    return this.user.write();
   }
 }
 
