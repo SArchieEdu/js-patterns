@@ -1,22 +1,50 @@
-export class SuccessButton {}
-export class ErrorButton {}
-export class SuccessNotification {}
-export class ErrorNotification {}
+export class SuccessButton {
+  create() {
+    return '<div class="button button__success">Button</div>'
+  }
+}
+
+export class ErrorButton {
+  create() {
+    return '<div class="button button__error">Button</div>'
+  }
+}
+
+export class SuccessNotification {
+  create() {
+    return '<div class="notify notify__success">Notification</div>'
+  }
+}
+
+export class ErrorNotification {
+  create() {
+    return '<div class="notify notify__error">Notification</div>'
+  }
+}
 
 export class SuccessControl {
   create (type = '') {
-    // todo: implement logic
+    if (type === 'notification')
+      return new SuccessNotification()
+    else
+      return new SuccessButton()
   }
 }
 
 export class ErrorControl {
   create (type = '') {
-    // todo: implement logic
+    if (type === 'notification')
+      return new ErrorNotification()
+    else
+      return new ErrorButton()
   }
 }
 
 export default class ControlsFactory {
   getFactory (factoryType = '') {
-    // todo: implement logic
+    if (factoryType === 'error')
+      return new ErrorControl()
+    else
+      return new SuccessControl()
   }
 }

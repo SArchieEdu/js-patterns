@@ -21,8 +21,3 @@ export class Notification {
   }
 }
 
-/*
-const notify = new Notification('myNotify', new GreenColorsPallet)
-console.log(notify.toString())
-*/
-
