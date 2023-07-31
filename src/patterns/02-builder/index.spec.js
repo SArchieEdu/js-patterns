@@ -31,4 +31,16 @@ describe('patterns/builder', () => {
     expect(request.url.searchParams.get('filter_lte')).toBe('18');
     expect(request.url.searchParams.get('filter_gte')).toBe('27');
   });
+
+  it('should be able to chain methods', () => {
+    const request = new RequestBuilder('https://example.com');
+
+    const result =
+      request
+        .addPagination(10, 20)
+        .addSort('name', 'desc')
+        .addFilter('age', 18, 27);
+
+    expect(result instanceof RequestBuilder).toBeTruthy();
+  });
 });
