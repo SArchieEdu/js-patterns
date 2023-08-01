@@ -5,7 +5,7 @@ createInput
 createTable
 */
 
-interface ComponentFactory {
+/* interface ComponentFactory {
     createButton(): Button;
     createInput(): Input;
     createTable(): Table;
@@ -63,4 +63,4 @@ function Component() {
     return <div>
         {currentFabric.createButton()}
     </div>
-}
+} */
