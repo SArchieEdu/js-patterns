@@ -12,8 +12,8 @@ describe('patterns/strategy', () => {
   });
 
   it('should be defined', () => {
-    const club = new Sword();
-    const hero = new Hero('Barbarian', club);
+    const sword = new Sword();
+    const hero = new Hero('Barbarian', sword);
     const monster1 = new Monster(4);
     const monster2 = new Monster(8);
 
@@ -22,8 +22,8 @@ describe('patterns/strategy', () => {
   });
 
   it('should be defined', () => {
-    const club = new MagicWand();
-    const hero = new Hero('Barbarian', club);
+    const magicWand = new MagicWand();
+    const hero = new Hero('Barbarian', magicWand);
     const monster1 = new Monster(4);
     const monster2 = new Monster(8);
 

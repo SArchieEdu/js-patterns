@@ -10,7 +10,7 @@ export class Sword {
   speed = 1;
   damage = 15;
   attack (monster) {
-    // todo: add implementation
+    return this.damage * this.speed - monster.armor;
   }
 }
 
@@ -18,18 +18,18 @@ export class MagicWand {
   speed = 2;
   damage = 8;
   attack (monster) {
-    // todo: add implementation
+    return this.damage * this.speed - monster.armor;
   }
 }
 
 export class Hero {
-  constructor(name) {
+  constructor(name, weapon) {
     this.name = name;
-    // todo: add implementation
+    this.weapon = weapon;
   }
 
   hit (monster) {
-    // todo: add implementation
+    return this.weapon.attack(monster);
   }
 }
 
