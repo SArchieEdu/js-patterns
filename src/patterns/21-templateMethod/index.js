@@ -11,6 +11,11 @@ class HotDrinksPot {
     this.pourInCup();
     this.addCondiments();
   }
+
+  boilWater() { throw new Error("Implement"); }
+  brew() { throw new Error("Implement"); }
+  pourInCup() { throw new Error("Implement"); }
+  addCondiments() { throw new Error("Implement"); }
 }
 
 export class TeaPot extends HotDrinksPot {
