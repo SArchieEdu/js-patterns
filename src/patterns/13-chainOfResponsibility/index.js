@@ -1,17 +1,19 @@
 class Handler {
   name = '';
   regExp = /./;
+  next;
 
   setNext (handler) {
-    // todo: implement
-  }
-
-  next (data) {
-    // todo: implement
+    this.next = handler;
+    return handler;
   }
 
   validate (data) {
-    // todo: implement
+    if (!this.regExp.test(data)) {
+      return `Validation rule "${this.name}" didn't pass for string "${data}"`
+    }
+
+    return this.next?.validate(data);
   }
 }
 
