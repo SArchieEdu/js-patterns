@@ -5,11 +5,19 @@ export class Range {
   }
 
   forEach (callback) {
-    // todo: add implementation
+    return this.getRange().forEach(n => callback(n));
   }
 
   getRange () {
-    // todo: add implementation
+    if (this.end < this.start) {
+      throw new Error("Range's end param should be greater than the start param.");
+    }
+
+    const range = [];
+    for (let i = this.start; i <= this.end; i++) {
+      range.push(i);
+    }
+    return range;
   }
 }
 
