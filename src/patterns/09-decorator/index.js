@@ -2,6 +2,10 @@ class Additional {
   price
 
   constructor(coffee = null) {
+    if (this.constructor.name === 'Additional') {
+      throw new Error(`${this.constructor.name}: can not create instance of abstract class`);
+    }
+
     this.coffePrice = coffee ? coffee.getPrice() : 0
   }
 
