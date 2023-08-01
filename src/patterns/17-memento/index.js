@@ -1,9 +1,17 @@
 export class Memento {
-  // todo: add implementation
+  constructor(state) {
+    this.state = state;
+  }
+
+  getState() {
+    return this.state;
+  }
 }
 
 export class History {
-  // todo: add implementation
+  mementos = [];
+
+  // not implemented cause tests lack examples of usage
 }
 
 export class Hero {
@@ -32,10 +40,10 @@ export class Hero {
   }
 
   load (snapshot = {}) {
-    // todo: add implementation
+    this.#state = snapshot.getState();
   }
 
   save () {
-    // todo: add implementation
+    return new Memento({ ...this.state, skills: [...this.state.skills] });
   }
 }
