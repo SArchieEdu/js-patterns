@@ -1,17 +1,24 @@
 export default class RequestBuilder {
-  constructor(url = '') {
+  constructor(url = "") {
     this.url = new URL(url);
   }
 
-  addPagination (start, end) {
-    // todo: implement logic
+  addPagination(start, end) {
+    this.url.searchParams.set("start", start);
+    this.url.searchParams.set("end", end);
+    return this.url;
   }
 
-  addSort (sort, order) {
-    // todo: implement logic
+  addSort(sort, order) {
+    this.url.searchParams.set("sort", sort);
+    this.url.searchParams.set("order", order);
+    return this.url;
   }
 
-  addFilter (filter, filterLte, filterGte) {
-    // todo: implement logic
+  addFilter(filter, filterLte, filterGte) {
+    this.url.searchParams.set("filter", filter);
+    this.url.searchParams.set("filter_lte", filterLte);
+    this.url.searchParams.set("filter_gte", filterGte);
+    return this.url;
   }
 }
