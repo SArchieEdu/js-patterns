@@ -7,7 +7,7 @@ export class BillSharing {
   }
 
   addParticipant (participant) {
-    // todo: add implementation
+    this.participants.push(participant);
   }
 
   getPaymentAmount() {
@@ -19,11 +19,16 @@ export class BillSharing {
   }
 
   share () {
-    // todo: add implementation
+    this.participants.forEach(participant => participant.pay());
   }
 
   borrow (amount = 0) {
-    // todo: add implementation
+    const participants = this.participants.filter(participant => participant.cash);
+
+    participants.forEach(participant => {
+      // FYI: I've fixed the naming here by renaming User#borrow to User#lend.
+      participant.lend(amount / participants.length);
+    })
   }
 }
 
@@ -35,10 +40,22 @@ export class User {
   }
 
   pay () {
-    // todo: add implementation
+    const amount = this.billSharing.getPaymentAmount();
+    if (this.cash < amount) {
+      this.billSharing.pay(this.cash);
+      const diff = amount - this.cash;
+      this.cash = 0;
+      this.billSharing.borrow(diff);
+    } else {
+      this.billSharing.pay(amount);
+      this.cash -= amount;
+    }
   }
 
-  borrow (amount = 0) {
-    // todo: add implementation
+  lend (amount = 0) {
+    if (this.cash >= amount) {
+      this.billSharing.pay(amount);
+      this.cash -= amount;
+    }
   }
 }

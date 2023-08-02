@@ -11,7 +11,7 @@ describe('patterns/mediator', () => {
     billSharing = null;
   });
 
-  it('should be abel to split the bill equally', () => {
+  it('should be able to split the bill equally', () => {
     const john = new User("John Doe", 100, billSharing);
     const peter = new User("Peter Parker", 250, billSharing);
     const bruce = new User("Bruce Wayne", 250, billSharing);
@@ -28,7 +28,7 @@ describe('patterns/mediator', () => {
     expect(billSharing.balance).toBe(300);
   });
 
-  it('should be abel to borrow cash form other participants', () => {
+  it('should be able to borrow cash from other participants', () => {
     const john = new User("John Doe", 50, billSharing);
     const peter = new User("Peter Parker", 150, billSharing);
     const bruce = new User("Bruce Wayne", 150, billSharing);
