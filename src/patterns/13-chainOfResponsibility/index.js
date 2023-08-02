@@ -5,12 +5,17 @@ class Handler {
 
   setNext (handler) {
     this.nextHandler = handler
-    return handler
+    return this.nextHandler
+  }
+
+  next(data) {
+    if (this.nextHandler)
+      return this.nextHandler.validate(data)
   }
 
   validate (data) {
     if (this.regExp.test(data)) {
-      return this.nextHandler?.validate(data)
+      return this.next(data)
     }
 
     return `Validation rule "${this.name}" didn't pass for string "${data}"`
