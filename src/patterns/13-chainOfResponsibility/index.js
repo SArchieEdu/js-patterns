@@ -3,8 +3,14 @@ class Handler {
   regExp = /./;
 
   setNext (handler) {
-    this.next = handler;
-    return handler;
+    this.nextHandler = handler;
+    return this.nextHandler;
+  }
+
+  next(data) {
+    if (this.nextHandler) {
+      return this.nextHandler.validate(data);
+    }
   }
 
   validate (data) {
@@ -12,7 +18,7 @@ class Handler {
       return `Validation rule "${this.name}" didn't pass for string "${data}"`
     }
 
-    return this.next?.validate(data);
+    return this.next(data);
   }
 }
 
