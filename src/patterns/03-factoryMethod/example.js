@@ -1,4 +1,4 @@
-
+/* 
 class FabricNode {
     draw() {
         return <FabricNode/>
@@ -34,4 +34,4 @@ function paint(node) {
 
 
 }
-
+ */
