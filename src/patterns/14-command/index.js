@@ -4,7 +4,7 @@ export class NextPage {
   }
 
   execute () {
-    this.pagination.nextPage();
+    return this.pagination.nextPage();
   }
 }
 
@@ -14,7 +14,7 @@ export class PrevPage {
   }
 
   execute () {
-    this.pagination.prevPage();
+    return this.pagination.prevPage();
   }
 }
 
