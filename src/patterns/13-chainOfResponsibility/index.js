@@ -1,7 +1,6 @@
 class Handler {
   name = '';
   regExp = /./;
-  next;
 
   setNext (handler) {
     this.next = handler;
