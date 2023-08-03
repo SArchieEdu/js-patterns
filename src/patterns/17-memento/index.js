@@ -1,13 +1,19 @@
-export class Memento {
-  // todo: add implementation
+class Memento {
+  constructor(state) {
+    this.state = state
+  }
+
+  getState() {
+    return this.state
+  }
 }
 
 export class History {
-  // todo: add implementation
+  snapshots = []
 }
 
 export class Hero {
-  #name = '';
+  #name = ''
 
   #state = {
     level: 1,
@@ -15,27 +21,32 @@ export class Hero {
   };
 
   constructor(name = '', history = {}) {
-    this.#name = name;
-    this.history = history;
+    this.#name = name
+    this.history = history
   }
 
   get state () {
-    return this.#state;
+    return this.#state
   }
 
   addSkill (skill) {
-    this.#state.skills.push(skill);
+    this.#state.skills.push(skill)
   }
 
   increaseLevel () {
-    this.#state.level += 1;
+    this.#state.level += 1
   }
 
   load (snapshot = {}) {
-    // todo: add implementation
+    this.#state = snapshot.getState()
   }
 
   save () {
-    // todo: add implementation
+    return new Memento({
+      ...this.state,
+      skills: [...this.state.skills]
+    })
   }
 }
+
+

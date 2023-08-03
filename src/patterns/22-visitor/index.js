@@ -1,17 +1,18 @@
 export class Visitor {
   constructor(compositeItem) {
-    this.compositeItem = compositeItem;
-    this.init();
+    this.compositeItem = compositeItem
+    this.init()
   }
 
   init () {
-    this.addGetSize();
-
-    // todo: add implementation
+    this.addGetSize()
+    this.compositeItem.children.forEach(child => child.accept(Visitor))
   }
 
   addGetSize () {
-    // todo: add implementation
+    this.compositeItem.getSize = () => {
+      return 1 + this.compositeItem.children.reduce((sum, child) => sum + child.getSize(), 0)
+    }
   }
 }
 
@@ -21,12 +22,12 @@ export class Comment {
     content = '',
     children = []
   } = {}) {
-    this.id = id;
-    this.content = content;
-    this.children = children;
+    this.id = id
+    this.content = content
+    this.children = children
   }
 
   accept (Visitor) {
-    new Visitor(this);
+    new Visitor(this)
   }
 }
