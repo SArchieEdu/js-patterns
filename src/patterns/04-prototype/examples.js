@@ -1,4 +1,4 @@
-const storageNode = {
+/* const storageNode = {
     id: 'asdasdasdas',
     level: 100,
     quality: {
@@ -17,4 +17,4 @@ const storageNode = {
             id: nanoid(),
         }
     }
-}
+} */
