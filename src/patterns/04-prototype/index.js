@@ -1,5 +1,7 @@
 class Monster {
-  // todo: implement logic
+  constructor(settings) {
+    this.settings = settings;
+  }
 }
 
 export default class Location {
@@ -7,14 +9,28 @@ export default class Location {
 
   constructor(name = '', monstersCount = 0, monstersSettings = {}) {
     this.name = name;
-    // todo: implement logic
+    this.monstersCount = monstersCount;
+    this.monstersSettings = monstersSettings;
+  }
+
+  get monstersSettings() {
+    return this._settings;
+  }
+
+  set monstersSettings(value) {
+    this._settings = value;
+    this.initMonsters();
   }
 
   initMonsters () {
-    // todo: implement logic
+    const newMonsters = [];
+    for(let i = 0; i < this.monstersCount; i++) {
+      newMonsters.push(new Monster(this._settings));
+    }
+    this.monsters = newMonsters;
   }
 
   clone () {
-    // todo: implement logic
+    return new Location(this.name, this.monstersCount, { ...this._settings });
   }
 }
