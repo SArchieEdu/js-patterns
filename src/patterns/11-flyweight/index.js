@@ -1,18 +1,31 @@
 class Flyweight {
-  // todo: add implementation
+  constructor(info) {
+    this.name = info.name;
+    this.country = info.country;
+    this.color = info.color;
+  }
 }
 
 export class ProductsStore {
   flyweights = {};
   products = [];
 
-  addProduct (productData = {}) {
-    const productFlyweight = this.getOrCreateFlyweight(productData.info);
-
-    // todo: add implementation
+  #createKey(info = {}) {
+    return Object.values(info).join("-");
   }
 
-  getOrCreateFlyweight (info = {}) {
-    // todo: add implementation
+  addProduct(productData = {}) {
+    const productFlyweight = this.getOrCreateFlyweight(productData.info);
+
+    this.products.push({ ...productData, info: productFlyweight });
+  }
+
+  getOrCreateFlyweight(info = {}) {
+    const key = this.#createKey(info);
+    if (!this.flyweights[key]) {
+      this.flyweights[key] = new Flyweight(info);
+    }
+
+    return this.flyweights[key];
   }
 }
