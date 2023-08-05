@@ -4,7 +4,7 @@ export class Child {
   }
 
   getSum () {
-    // todo: add implementation
+    return this.value;
   }
 }
 
@@ -14,7 +14,7 @@ export class Parent {
   }
 
   getSum () {
-    // todo: add implementation
+    return this.values.reduce((acc, value) => acc + value.getSum(), 0);
   }
 }
 
