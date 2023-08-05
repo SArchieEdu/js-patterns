@@ -17,7 +17,8 @@ export class Rectangle {
 
 export class Adapter {
   constructor(shape) {
-    // todo: add implementation
+    this.width = shape.size;
+    this.height = shape.size;
   }
 }
 
