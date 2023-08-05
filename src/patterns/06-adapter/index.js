@@ -1,4 +1,4 @@
-export const getArea = shape => {
+export const getArea = (shape) => {
   return shape.width * shape.height;
 };
 
@@ -17,7 +17,7 @@ export class Rectangle {
 
 export class Adapter {
   constructor(shape) {
-    // todo: add implementation
+    this.width = shape.size;
+    this.height = shape.size;
   }
 }
-
