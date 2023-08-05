@@ -1,4 +1,4 @@
-class Fabric {
+/* class Fabric {
     items;
     draw() {
         // logic
@@ -41,4 +41,4 @@ graph.items = [storage, fabric, node];
 storage.items = [node1, node2];
 fabric.items = [node3, node4]
 
-graph.draw();
+graph.draw(); */
