@@ -4,21 +4,20 @@ export class User {
     this.rights = rights;
   }
 
-  write () {
+  write() {
     return "write something to repo";
   }
 }
 
 export class ProxyUser {
-  rights = [];
-
-  constructor() {
-    // todo: add implementation
+  constructor(user) {
+    this.user = user;
   }
 
-  write () {
-    // todo: add implementation
+  write() {
+    if (!this.user.rights.includes("admin")) {
+      return "user does not have permissions to write";
+    }
+    return this.user.write();
   }
 }
-
-
