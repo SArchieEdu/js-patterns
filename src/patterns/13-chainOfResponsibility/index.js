@@ -1,42 +1,54 @@
 class Handler {
-  name = '';
+  name = "";
   regExp = /./;
+  currentHandler = null;
+  nextHandler = null;
 
-  setNext (handler) {
-    // todo: implement
+  constructor() {
+    this.currentHandler = this;
   }
 
-  next (data) {
-    // todo: implement
+  setNext(handler) {
+    this.nextHandler = handler;
+    return this.nextHandler;
   }
 
-  validate (data) {
-    // todo: implement
+  next(data) {
+    this.currentHandler = this.currentHandler.nextHandler;
+    return data;
+  }
+
+  validate(data) {
+    let result;
+    if (!data.match(this.currentHandler.regExp)) {
+      result = `Validation rule "${this.currentHandler.name}" didn\'t pass for string "${data}"`;
+    }
+    return this.next(result);
   }
 }
 
 class MinLengthHandler extends Handler {
-  name = 'min-length';
+  name = "min-length";
   regExp = /.{5}/;
 }
 
 class NumbersHandler extends Handler {
-  name = 'numbers';
+  name = "numbers";
   regExp = /[0-9]/;
 }
 
 class LettersHandler extends Handler {
-  name = 'letter';
+  name = "letter";
   regExp = /[a-z]/i;
 }
 
 class CapitalLettersHandler extends Handler {
-  name = 'capital-letters';
+  name = "capital-letters";
   regExp = /[A-Z]/;
 }
 
 class SpecialCharsHandler extends Handler {
-  name = 'special-chars';
+  name = "special-chars";
   regExp = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 }
 
@@ -44,7 +56,8 @@ const chainOfResponsibility = new MinLengthHandler();
 
 chainOfResponsibility
   .setNext(new NumbersHandler())
-  .setNext(new LettersHandler())
+  /*   .setNext(new LettersHandler()) */
+  .setNext(new CapitalLettersHandler())
   .setNext(new CapitalLettersHandler())
   .setNext(new SpecialCharsHandler());
 
