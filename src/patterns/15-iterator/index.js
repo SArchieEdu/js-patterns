@@ -1,15 +1,22 @@
 export class Range {
+  #range = null;
+
   constructor(start, end) {
     this.start = start;
     this.end = end;
+    this.#range = Array.from(
+      Array(end - start + 1),
+      (_, index) => index + start
+    );
   }
 
-  forEach (callback) {
-    // todo: add implementation
+  forEach(callback) {
+    return this.#range.forEach((item) => {
+      callback(item);
+    });
   }
 
-  getRange () {
-    // todo: add implementation
+  getRange() {
+    return this.#range;
   }
 }
-
