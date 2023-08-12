@@ -8,6 +8,7 @@ export class BillSharing {
 
   addParticipant(participant) {
     this.participants.push(participant);
+    return this;
   }
 
   getPaymentAmount() {
@@ -19,12 +20,8 @@ export class BillSharing {
   }
 
   share() {
-    const paymentAmount = this.getPaymentAmount();
     this.participants.forEach((participant) => {
-      const participantPaymentAmount =
-        participant.cash < paymentAmount ? participant.cash : paymentAmount;
-      participant.pay(participantPaymentAmount);
-      this.pay(participantPaymentAmount);
+      participant.pay();
     });
 
     if (this.balance < this.price) {
@@ -46,13 +43,18 @@ export class BillSharing {
 }
 
 export class User {
-  constructor(name = "", cash = 0) {
+  constructor(name = "", cash = 0, billSharing) {
     this.name = name;
     this.cash = cash;
+    this.billSharing = billSharing;
   }
 
-  pay(amount = 0) {
-    this.cash = this.cash - amount;
+  pay() {
+    const paymentAmount = this.billSharing.getPaymentAmount();
+    const participantPaymentAmount =
+      this.cash < paymentAmount ? this.cash : paymentAmount;
+    this.cash = this.cash - participantPaymentAmount;
+    this.billSharing.pay(participantPaymentAmount);
   }
 
   borrow(amount = 0) {
