@@ -1,66 +1,57 @@
 class HotDrinksPot {
-  // todo: add implementation
-}
-
-// todo: make refactoring via template method pattern
-export class TeaPot {
-  algorithmSteps = {};
-
   constructor() {
+    this.algorithmSteps = {};
     this.prepareRecipe();
   }
 
-  prepareRecipe () {
+  prepareRecipe() {
     this.boilWater();
-    this.brewTea();
+    this.brew();
     this.pourInCup();
-    this.addLemon();
+    this.addCondiments();
+  }
+}
+
+export class TeaPot extends HotDrinksPot {
+  constructor() {
+    super();
   }
 
   boilWater ()  {
     this.algorithmSteps.boilWater = 'Boiling water';
   }
 
-  brewTea () {
-    this.algorithmSteps.brewTea = 'Steeping the tea';
+  brew () {
+    this.algorithmSteps.brew = 'Steeping the tea';
   }
 
   pourInCup () {
     this.algorithmSteps.pourInCup = 'Pouring into cup';
   }
 
-  addLemon () {
-    this.algorithmSteps.addLemon = 'Adding Lemon';
+  addCondiments () {
+    this.algorithmSteps.addCondiments = 'Adding Lemon';
   }
 }
 
-export class CoffeePot {
-  algorithmSteps = {};
-
+export class CoffeePot extends HotDrinksPot {
   constructor() {
-    this.prepareRecipe();
-  }
-
-  prepareRecipe () {
-    this.boilWater();
-    this.brewCoffee();
-    this.pourInCup();
-    this.addSugarAndMilk();
+    super();
   }
 
   boilWater ()  {
     this.algorithmSteps.boilWater = 'Boiling water';
   }
 
-  brewCoffee () {
-    this.algorithmSteps.brewCoffee = 'Dripping Coffee through filter';
+  brew () {
+    this.algorithmSteps.brew = 'Dripping Coffee through filter';
   }
 
   pourInCup () {
     this.algorithmSteps.pourInCup = 'Pouring into cup';
   }
 
-  addSugarAndMilk () {
-    this.algorithmSteps.addSugarAndMilk = 'Adding Sugar and Milk';
+  addCondiments () {
+    this.algorithmSteps.addCondiments = 'Adding Sugar and Milk';
   }
 }
