@@ -7,11 +7,17 @@ export class Visitor {
   init () {
     this.addGetSize();
 
+    // Непонятно какая дополнительная логика должна быть добавлена
     // todo: add implementation
   }
 
   addGetSize () {
-    // todo: add implementation
+    this.compositeItem.getSize = () => {
+      return this.compositeItem.children.reduce((acc, child) => {
+        child.accept(Visitor);
+        return acc + child.getSize();
+      }, 1);
+    }
   }
 }
 
