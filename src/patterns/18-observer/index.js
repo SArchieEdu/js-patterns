@@ -1,12 +1,12 @@
 export class NewsChannel {
   users = [];
 
-  subscribe (user) {
-    // todo: add implementation
+  subscribe(user) {
+    this.users.push(user);
   }
 
-  notify (message = '') {
-    // todo: add implementation
+  notify(message = "") {
+    this.users.forEach((user) => user.receiveMessage(message));
   }
 }
 
@@ -17,7 +17,7 @@ export class User {
     this.name = name;
   }
 
-  receiveMessage (message = '') {
-    // todo: add implementation
+  receiveMessage(message = "") {
+    this.messagesHistory.push(message);
   }
 }
