@@ -1,21 +1,22 @@
 export class RedColorsPallet {
-  constructor () {
+  constructor() {
     this.color = 'red';
   }
 }
 
 export class GreenColorsPallet {
-  constructor () {
+  constructor() {
     this.color = 'green';
   }
 }
 
 export class Notification {
-  constructor () {
-    // todo: add implementation
+  constructor(name, pallet) {
+    this.name = name;
+    this.colorsPallet = pallet;
   }
 
-  toString () {
+  toString() {
     return `This is ${this.name} notification with ${this.colorsPallet.color} colors pallet`;
   }
 }

@@ -1,66 +1,55 @@
 class HotDrinksPot {
-  // todo: add implementation
-}
-
-// todo: make refactoring via template method pattern
-export class TeaPot {
-  algorithmSteps = {};
+  algorithmSteps = {}
 
   constructor() {
-    this.prepareRecipe();
+    this.prepareRecipe()
   }
 
   prepareRecipe () {
-    this.boilWater();
-    this.brewTea();
-    this.pourInCup();
-    this.addLemon();
+    this.boilWater()
+    this.brew()
+    this.pourInCup()
+    this.addCondiments()
   }
 
+  boilWater() {/*A*/}
+  brew() {/*A*/}
+  pourInCup() {/*A*/}
+  addCondiments() {/*A*/}
+}
+
+export class TeaPot extends HotDrinksPot {
   boilWater ()  {
-    this.algorithmSteps.boilWater = 'Boiling water';
+    this.algorithmSteps.boilWater = 'Boiling water'
   }
 
-  brewTea () {
-    this.algorithmSteps.brewTea = 'Steeping the tea';
+  brew () {
+    this.algorithmSteps.brew = 'Steeping the tea'
   }
 
   pourInCup () {
-    this.algorithmSteps.pourInCup = 'Pouring into cup';
+    this.algorithmSteps.pourInCup = 'Pouring into cup'
   }
 
-  addLemon () {
-    this.algorithmSteps.addLemon = 'Adding Lemon';
+  addCondiments () {
+    this.algorithmSteps.addCondiments = 'Adding Lemon'
   }
 }
 
-export class CoffeePot {
-  algorithmSteps = {};
-
-  constructor() {
-    this.prepareRecipe();
-  }
-
-  prepareRecipe () {
-    this.boilWater();
-    this.brewCoffee();
-    this.pourInCup();
-    this.addSugarAndMilk();
-  }
-
+export class CoffeePot extends HotDrinksPot {
   boilWater ()  {
-    this.algorithmSteps.boilWater = 'Boiling water';
+    this.algorithmSteps.boilWater = 'Boiling water'
   }
 
-  brewCoffee () {
-    this.algorithmSteps.brewCoffee = 'Dripping Coffee through filter';
+  brew () {
+    this.algorithmSteps.brew = 'Dripping Coffee through filter'
   }
 
   pourInCup () {
-    this.algorithmSteps.pourInCup = 'Pouring into cup';
+    this.algorithmSteps.pourInCup = 'Pouring into cup'
   }
 
-  addSugarAndMilk () {
-    this.algorithmSteps.addSugarAndMilk = 'Adding Sugar and Milk';
+  addCondiments () {
+    this.algorithmSteps.addCondiments = 'Adding Sugar and Milk'
   }
 }
