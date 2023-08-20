@@ -1,66 +1,42 @@
 class HotDrinksPot {
-  // todo: add implementation
+  algorithmSteps = {};
+  constructor() {
+    this.prepareRecipe();
+  }
+  prepareRecipe() {
+    this.boilWater();
+    this.brew();
+    this.addCondiments();
+    this.pourInCup();
+  }
+  boilWater() {
+    this.algorithmSteps.boilWater = "Boiling water";
+  }
+
+  brew() {}
+
+  addCondiments() {}
+
+  pourInCup() {
+    this.algorithmSteps.pourInCup = "Pouring into cup";
+  }
 }
 
 // todo: make refactoring via template method pattern
-export class TeaPot {
-  algorithmSteps = {};
-
-  constructor() {
-    this.prepareRecipe();
+export class TeaPot extends HotDrinksPot {
+  brew() {
+    this.algorithmSteps.brew = "Steeping the tea";
   }
-
-  prepareRecipe () {
-    this.boilWater();
-    this.brewTea();
-    this.pourInCup();
-    this.addLemon();
-  }
-
-  boilWater ()  {
-    this.algorithmSteps.boilWater = 'Boiling water';
-  }
-
-  brewTea () {
-    this.algorithmSteps.brewTea = 'Steeping the tea';
-  }
-
-  pourInCup () {
-    this.algorithmSteps.pourInCup = 'Pouring into cup';
-  }
-
-  addLemon () {
-    this.algorithmSteps.addLemon = 'Adding Lemon';
+  addCondiments() {
+    this.algorithmSteps.addCondiments = "Adding Lemon";
   }
 }
 
-export class CoffeePot {
-  algorithmSteps = {};
-
-  constructor() {
-    this.prepareRecipe();
+export class CoffeePot extends HotDrinksPot {
+  brew() {
+    this.algorithmSteps.brew = "Dripping Coffee through filter";
   }
-
-  prepareRecipe () {
-    this.boilWater();
-    this.brewCoffee();
-    this.pourInCup();
-    this.addSugarAndMilk();
-  }
-
-  boilWater ()  {
-    this.algorithmSteps.boilWater = 'Boiling water';
-  }
-
-  brewCoffee () {
-    this.algorithmSteps.brewCoffee = 'Dripping Coffee through filter';
-  }
-
-  pourInCup () {
-    this.algorithmSteps.pourInCup = 'Pouring into cup';
-  }
-
-  addSugarAndMilk () {
-    this.algorithmSteps.addSugarAndMilk = 'Adding Sugar and Milk';
+  addCondiments() {
+    this.algorithmSteps.addCondiments = "Adding Sugar and Milk";
   }
 }
