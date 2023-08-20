@@ -4,16 +4,12 @@ export class Game {
     locationName = "darkForest",
     monsters = ["demon", "demon", "undead"],
   } = {}) {
-    this.heroName = heroName;
-    this.locationName = locationName;
-    this.monsters = monsters;
+    this.hero = new Hero(heroName);
+    this.location = new Location(locationName);
+    this.monsters = monsters.map((monster) => new Monster(monster));
   }
   start() {
-    this.hero = new Hero(this.heroName);
-    this.location = new Location(this.locationName);
-    this.monsters.forEach((monster) =>
-      this.location.addMonster(new Monster(monster))
-    );
+    this.monsters.forEach((monster) => this.location.addMonster(monster));
   }
 }
 
