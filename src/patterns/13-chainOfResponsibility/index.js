@@ -1,12 +1,7 @@
 class Handler {
   name = "";
   regExp = /./;
-  currentHandler = null;
   nextHandler = null;
-
-  constructor() {
-    this.currentHandler = this;
-  }
 
   setNext(handler) {
     this.nextHandler = handler;
@@ -14,16 +9,17 @@ class Handler {
   }
 
   next(data) {
-    this.currentHandler = this.currentHandler.nextHandler;
-    return data;
+    if (this.nextHandler) {
+      return this.nextHandler.validate(data);
+    }
   }
 
   validate(data) {
-    let result;
-    if (!data.match(this.currentHandler.regExp)) {
-      result = `Validation rule "${this.currentHandler.name}" didn\'t pass for string "${data}"`;
+    if (!data.match(this.regExp)) {
+      return `Validation rule "${this.name}" didn\'t pass for string "${data}"`;
     }
-    return this.next(result);
+
+    return this.next(data);
   }
 }
 
@@ -56,8 +52,7 @@ const chainOfResponsibility = new MinLengthHandler();
 
 chainOfResponsibility
   .setNext(new NumbersHandler())
-  /*   .setNext(new LettersHandler()) */
-  .setNext(new CapitalLettersHandler())
+  .setNext(new LettersHandler())
   .setNext(new CapitalLettersHandler())
   .setNext(new SpecialCharsHandler());
 
