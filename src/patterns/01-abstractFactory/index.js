@@ -3,29 +3,41 @@ export class ErrorButton {}
 export class SuccessNotification {}
 export class ErrorNotification {}
 
-export class SuccessControl {
+class Control {
+  types = {};
+
   create(type = "") {
-    return {
-      button: () => new SuccessButton(),
-      notification: () => new SuccessNotification(),
-    }[type]();
+    const ControlType = this.types[type];
+    if (!ControlType) {
+      throw new Error("Control type is not defined");
+    }
+    return new ControlType();
   }
 }
 
-export class ErrorControl {
-  create(type = "") {
-    return {
-      button: () => new ErrorButton(),
-      notification: () => new ErrorNotification(),
-    }[type]();
+export class SuccessControl extends Control {
+  constructor() {
+    super();
+    this.types.button = SuccessButton;
+    this.types.notification = SuccessNotification;
+  }
+}
+
+export class ErrorControl extends Control {
+  constructor() {
+    super();
+    this.types.button = ErrorButton;
+    this.types.notification = ErrorNotification;
   }
 }
 
 export default class ControlsFactory {
   getFactory(factoryType = "") {
-    return {
-      success: () => new SuccessControl(),
-      error: () => new ErrorControl(),
-    }[factoryType]();
+    if (factoryType === "success") {
+      return new SuccessControl();
+    }
+    if (factoryType === "error") {
+      return new ErrorControl();
+    }
   }
 }
