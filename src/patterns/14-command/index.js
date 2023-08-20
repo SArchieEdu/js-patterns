@@ -1,16 +1,16 @@
-class Page {
+export class NextPage {
   constructor(pagination) {
     this.pagination = pagination;
   }
-}
-
-export class NextPage extends Page {
   execute() {
     this.pagination.nextPage();
   }
 }
 
-export class PrevPage extends Page {
+export class PrevPage {
+  constructor(pagination) {
+    this.pagination = pagination;
+  }
   execute() {
     this.pagination.prevPage();
   }
