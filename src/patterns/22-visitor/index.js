@@ -4,29 +4,33 @@ export class Visitor {
     this.init();
   }
 
-  init () {
+  init() {
     this.addGetSize();
 
-    // todo: add implementation
+    this.compositeItem.children.forEach((child) => {
+      child.accept(Visitor);
+    });
   }
 
-  addGetSize () {
-    // todo: add implementation
+  addGetSize() {
+    this.compositeItem.getSize = () => {
+      const countOfOwnComment = 1;
+      return this.compositeItem.children.reduce(
+        (acc, child) => acc + child.getSize(),
+        countOfOwnComment
+      );
+    };
   }
 }
 
 export class Comment {
-  constructor({
-    id = '',
-    content = '',
-    children = []
-  } = {}) {
+  constructor({ id = "", content = "", children = [] } = {}) {
     this.id = id;
     this.content = content;
     this.children = children;
   }
 
-  accept (Visitor) {
+  accept(Visitor) {
     new Visitor(this);
   }
 }
