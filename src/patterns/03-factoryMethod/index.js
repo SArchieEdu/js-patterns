@@ -1,37 +1,39 @@
 class Input {
   element = {};
 
-  create() {}
+  create() {
+    return this.element;
+  }
 }
 
 export class TextInput extends Input {
   create() {
-    super.create();
     this.element.type = "text";
-    return this.element;
+    super.create();
   }
 }
 
 export class NumberInput extends Input {
   create() {
-    super.create();
     this.element.type = "number";
-    return this.element;
+    super.create();
   }
 }
 
 export class EmailInput extends Input {
   create() {
-    super.create();
     this.element.type = "email";
-    return this.element;
+    super.create();
   }
 }
 
 export const inputFactory = (type = "") => {
-  return {
-    text: () => new TextInput(),
-    number: () => new NumberInput(),
-    email: () => new EmailInput(),
-  }[type]();
+  const inputs = {
+    text: TextInput,
+    number: NumberInput,
+    email: EmailInput,
+  };
+
+  const Input = inputs[type];
+  return new Input();
 };
