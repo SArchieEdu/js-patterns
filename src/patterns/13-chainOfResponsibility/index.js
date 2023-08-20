@@ -1,42 +1,50 @@
 class Handler {
-  name = '';
+  name = "";
   regExp = /./;
+  nextHandler = null;
 
-  setNext (handler) {
-    // todo: implement
+  setNext(handler) {
+    this.nextHandler = handler;
+    return this.nextHandler;
   }
 
-  next (data) {
-    // todo: implement
+  next(data) {
+    if (this.nextHandler) {
+      return this.nextHandler.validate(data);
+    }
   }
 
-  validate (data) {
-    // todo: implement
+  validate(data) {
+    if (!data.match(this.regExp)) {
+      return `Validation rule "${this.name}" didn\'t pass for string "${data}"`;
+    }
+
+    return this.next(data);
   }
 }
 
 class MinLengthHandler extends Handler {
-  name = 'min-length';
+  name = "min-length";
   regExp = /.{5}/;
 }
 
 class NumbersHandler extends Handler {
-  name = 'numbers';
+  name = "numbers";
   regExp = /[0-9]/;
 }
 
 class LettersHandler extends Handler {
-  name = 'letter';
+  name = "letter";
   regExp = /[a-z]/i;
 }
 
 class CapitalLettersHandler extends Handler {
-  name = 'capital-letters';
+  name = "capital-letters";
   regExp = /[A-Z]/;
 }
 
 class SpecialCharsHandler extends Handler {
-  name = 'special-chars';
+  name = "special-chars";
   regExp = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 }
 

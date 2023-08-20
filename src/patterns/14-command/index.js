@@ -1,33 +1,39 @@
 export class NextPage {
-  execute () {
-    // todo: add implementation
+  constructor(pagination) {
+    this.pagination = pagination;
+  }
+  execute() {
+    this.pagination.nextPage();
   }
 }
 
 export class PrevPage {
-  execute () {
-    // todo: add implementation
+  constructor(pagination) {
+    this.pagination = pagination;
+  }
+  execute() {
+    this.pagination.prevPage();
   }
 }
 
 export class Pagination {
   currentPage = 1;
 
-  nextPage () {
-    return this.currentPage += 1;
+  nextPage() {
+    return (this.currentPage += 1);
   }
 
-  prevPage () {
-    return this.currentPage -= 1;
+  prevPage() {
+    return (this.currentPage -= 1);
   }
 }
 
 export class Button {
-  constructor (command) {
-    // todo: add implementation
+  constructor(command) {
+    this.command = command;
   }
 
-  click () {
-    // todo: add implementation
+  click() {
+    this.command.execute();
   }
 }

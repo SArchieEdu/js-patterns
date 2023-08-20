@@ -1,4 +1,4 @@
-interface Tv {
+/* interface Tv {
     getVolume(): number;
     setVolume(): number;
     //...
@@ -29,4 +29,4 @@ class Remote {
     changeVolumeByStep(step = 10) {
         this.device.setVolume(this.device.getVolume() + step)
     }
-}
+} */

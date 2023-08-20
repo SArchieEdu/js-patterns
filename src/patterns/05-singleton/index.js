@@ -1,5 +1,11 @@
 export default class Singleton {
+  static #instance = null;
+
   constructor() {
-    // todo: implement logic
+    if (!Singleton.#instance) {
+      Singleton.#instance = this;
+    }
+
+    return Singleton.#instance;
   }
 }

@@ -1,20 +1,29 @@
 class Monster {
-  // todo: implement logic
+  settings = {};
+  constructor(settings) {
+    this.settings = settings;
+  }
 }
 
 export default class Location {
   monsters = [];
 
-  constructor(name = '', monstersCount = 0, monstersSettings = {}) {
+  constructor(name = "", monstersCount = 0, monstersSettings = {}) {
     this.name = name;
-    // todo: implement logic
+    this.monstersCount = monstersCount;
+    this.monstersSettings = monstersSettings;
+    this.initMonsters();
   }
 
-  initMonsters () {
-    // todo: implement logic
+  initMonsters() {
+    this.monsters = Array.from(Array(this.monstersCount), () => {
+      return new Monster(this.monstersSettings);
+    });
   }
 
-  clone () {
-    // todo: implement logic
+  clone() {
+    return new Location(this.name, this.monstersCount, {
+      ...this.monstersSettings,
+    });
   }
 }

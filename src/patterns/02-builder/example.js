@@ -1,4 +1,4 @@
-const playerConfig = {
+/* const playerConfig = {
     config: {},
 
     addAdConfig() {
@@ -27,3 +27,4 @@ if (isDrmNeeded) {
 }
 
 
+ */
