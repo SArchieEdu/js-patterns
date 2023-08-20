@@ -14,8 +14,6 @@ export class Parent {
   }
 
   getSum() {
-    return this.values
-      .map((value) => value.getSum())
-      .reduce((acc, value) => acc + value, 0);
+    return this.values.reduce((acc, value) => acc + value.getSum(), 0);
   }
 }
