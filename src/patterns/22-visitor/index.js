@@ -7,11 +7,19 @@ export class Visitor {
   init () {
     this.addGetSize();
 
-    // todo: add implementation
+    this.compositeItem.children.forEach((child) => {
+      child.accept(Visitor);
+    });
   }
 
-  addGetSize () {
-    // todo: add implementation
+  addGetSize() {
+    this.compositeItem.getSize = () => {
+      const countOfOwnComment = 1;
+      return this.compositeItem.children.reduce(
+          (acc, child) => acc + child.getSize(),
+          countOfOwnComment
+      );
+    };
   }
 }
 

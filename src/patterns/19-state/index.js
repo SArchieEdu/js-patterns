@@ -28,19 +28,38 @@ class OldDigitalLock {
 }
 
 class Locked {
-  // todo: add implementation
+  status = 'locked';
+  constructor(key) {
+    this.key = key;
+  }
+
+  toggle(combination){
+    if(combination === this.key) {
+      return new Unlocked()
+    }
+
+    return this
+  }
 }
 
 class Unlocked {
-  // todo: add implementation
+  status = 'unlocked';
+  toggle(combination){
+    if(combination) {
+      return new Locked(combination)
+    }
+
+    return this
+  }
 }
 
 export class DigitalLock {
+  state;
   constructor(key = "") {
-    // todo: add implementation
+    this.state = new Locked(key);
   }
 
   toggle (combination = '') {
-    // todo: add implementation
+    this.state = this.state.toggle(combination);
   }
 }

@@ -46,11 +46,3 @@ describe('patterns/mediator', () => {
   })
 
 });
-
-
-
-// console.error("john cash", john.cash);
-// console.error("peter.cash", peter.cash);
-// console.error("bruce.cash", bruce.cash);
-//
-// console.error('billSharing.balance', billSharing.balance);

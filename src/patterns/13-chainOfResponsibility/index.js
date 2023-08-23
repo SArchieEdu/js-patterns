@@ -4,14 +4,22 @@ class Handler {
 
   setNext (handler) {
     // todo: implement
+    this.handler = handler;
+    return handler
   }
 
   next (data) {
     // todo: implement
+    return this.handler ? this.handler.validate(data): undefined
   }
 
   validate (data) {
     // todo: implement
+    if(this.regExp.test(data)){
+      return this.next(data);
+    }
+
+    return `Validation rule "${this.name}" didn\'t pass for string "${data}"`
   }
 }
 

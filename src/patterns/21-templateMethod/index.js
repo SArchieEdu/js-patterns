@@ -1,15 +1,15 @@
 class HotDrinksPot {
-  // todo: add implementation
-}
-
-// todo: make refactoring via template method pattern
-export class TeaPot {
   algorithmSteps = {};
-
   constructor() {
     this.prepareRecipe();
   }
+  prepareRecipe () {
+    throw new Error('need to implement')
+  }
+}
 
+// todo: make refactoring via template method pattern
+export class TeaPot extends HotDrinksPot {
   prepareRecipe () {
     this.boilWater();
     this.brewTea();
@@ -34,13 +34,7 @@ export class TeaPot {
   }
 }
 
-export class CoffeePot {
-  algorithmSteps = {};
-
-  constructor() {
-    this.prepareRecipe();
-  }
-
+export class CoffeePot extends HotDrinksPot {
   prepareRecipe () {
     this.boilWater();
     this.brewCoffee();

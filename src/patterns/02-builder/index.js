@@ -4,14 +4,18 @@ export default class RequestBuilder {
   }
 
   addPagination (start, end) {
-    // todo: implement logic
+    this.url.searchParams.set('start', start);
+    this.url.searchParams.set('end', end);
   }
 
   addSort (sort, order) {
-    // todo: implement logic
+    this.url.searchParams.set('sort', sort);
+    this.url.searchParams.set('order', order);
   }
 
   addFilter (filter, filterLte, filterGte) {
-    // todo: implement logic
+    this.url.searchParams.set('filter', filter);
+    this.url.searchParams.set('filter_lte', filterLte);
+    this.url.searchParams.set('filter_gte', filterGte);
   }
 }

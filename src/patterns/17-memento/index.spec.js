@@ -20,7 +20,7 @@ describe('patterns/memento', () => {
     hero.addSkill('fly');
     hero.increaseLevel();
 
-    expect(hero.state.skills.includes('fly')). toBeTruthy();
+    expect(hero.state.skills.includes('fly')).toBeTruthy();
     expect(hero.state.level).toBe(2);
 
     hero.load(snapshot1);
