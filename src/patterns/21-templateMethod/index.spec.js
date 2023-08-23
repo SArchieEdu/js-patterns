@@ -6,8 +6,8 @@ describe('patterns/templateMethod', () => {
 
     coffeePot.prepareRecipe();
 
-    expect(coffeePot.algorithmSteps.addCondiments).toBe('Adding Sugar and Milk');
-    expect(coffeePot.algorithmSteps.brew).toBe('Dripping Coffee through filter');
+    expect(coffeePot.algorithmSteps.addSugarAndMilk).toBe('Adding Sugar and Milk');
+    expect(coffeePot.algorithmSteps.brewCoffee).toBe('Dripping Coffee through filter');
   });
 
   it('should be able to make tea', () => {
@@ -15,7 +15,7 @@ describe('patterns/templateMethod', () => {
 
     teaPot.prepareRecipe();
 
-    expect(teaPot.algorithmSteps.addCondiments).toBe('Adding Lemon');
-    expect(teaPot.algorithmSteps.brew).toBe('Steeping the tea');
+    expect(teaPot.algorithmSteps.addLemon).toBe('Adding Lemon');
+    expect(teaPot.algorithmSteps.brewTea).toBe('Steeping the tea');
   });
 });

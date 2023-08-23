@@ -5,18 +5,36 @@ export class ErrorNotification {}
 
 export class SuccessControl {
   create (type = '') {
-    // todo: implement logic
+    switch (type){
+      case 'notification':
+        return new SuccessNotification()
+      case 'button':
+        return  new SuccessButton()
+      default: return null
+    }
   }
 }
 
 export class ErrorControl {
   create (type = '') {
-    // todo: implement logic
+    switch (type){
+      case 'notification':
+        return new ErrorNotification()
+      case 'button':
+        return  new ErrorButton()
+      default: return null
+    }
   }
 }
 
 export default class ControlsFactory {
   getFactory (factoryType = '') {
-    // todo: implement logic
+    switch (factoryType){
+      case 'success':
+        return new SuccessControl()
+      case 'error':
+        return  new ErrorControl()
+      default: return null
+    }
   }
 }

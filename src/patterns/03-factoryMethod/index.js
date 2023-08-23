@@ -1,23 +1,39 @@
+import {ErrorControl, SuccessControl} from "../01-abstractFactory";
+
 class Input {
   element = {};
 
-  create () {
+  create() {
     // Abstract method
   }
 }
 
 export class TextInput extends Input {
-  // todo: implement logic
+  create() {
+    return `text component`
+  }
 }
 
 export class NumberInput extends Input {
-  // todo: implement logic
+  create() {
+    return `number component`
+  }
 }
 
 export class EmailInput extends Input {
-  // todo: implement logic
+  create() {
+    return `email component`
+  }
 }
 
 export const inputFactory = (type = '') => {
-  // todo: implement logic
+  switch (type){
+    case 'text':
+      return new TextInput()
+    case 'number':
+      return  new NumberInput()
+    case 'email':
+      return  new EmailInput()
+    default: return null
+  }
 };

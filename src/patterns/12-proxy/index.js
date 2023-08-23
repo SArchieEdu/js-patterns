@@ -10,14 +10,16 @@ export class User {
 }
 
 export class ProxyUser {
-  rights = [];
-
-  constructor() {
-    // todo: add implementation
+  constructor(user) {
+    this.user = user;
   }
 
   write () {
-    // todo: add implementation
+    if(this.user.rights.some((role => role === 'admin'))) {
+      return this.user.write();
+    } else {
+      return 'user does not have permissions to write'
+    }
   }
 }
 

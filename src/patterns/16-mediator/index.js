@@ -7,11 +7,11 @@ export class BillSharing {
   }
 
   addParticipant (participant) {
-    // todo: add implementation
+    this.participants.push(participant)
   }
 
-  getPaymentAmount() {
-    return this.price / this.participants.length;
+  getPaymentAmount(participantsCount) {
+    return (this.price - this.balance) / participantsCount;
   }
 
   pay (amount = 0) {
@@ -19,12 +19,15 @@ export class BillSharing {
   }
 
   share () {
-    // todo: add implementation
+    this.participants.forEach((user, index) => {
+      const fairPay = this.getPaymentAmount(this.participants.length - index);
+      user.pay(fairPay)
+    });
   }
 
-  borrow (amount = 0) {
-    // todo: add implementation
-  }
+  // borrow (amount = 0) {
+  //   this.balance -= amount;
+  // }
 }
 
 export class User {
@@ -34,11 +37,21 @@ export class User {
     this.billSharing = billSharing;
   }
 
-  pay () {
-    // todo: add implementation
+  pay (amount = 0) {
+    const remainder = this.cash - amount;
+
+    if(remainder < 0) {
+      this.billSharing.pay(this.cash);
+      this.cash = 0;
+      // this.borrow(remainder);
+    } else {
+      this.billSharing.pay(amount);
+      this.cash = remainder
+    }
   }
 
-  borrow (amount = 0) {
-    // todo: add implementation
-  }
+  // borrow (amount = 0) {
+  //   this.billSharing.borrow(amount);
+  //   this.cash = 0;
+  // }
 }

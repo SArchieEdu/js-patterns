@@ -1,5 +1,9 @@
 class Flyweight {
-  // todo: add implementation
+  constructor(info) {
+    this.name = info.name;
+    this.country = info.country;
+    this.color = info.color;
+  }
 }
 
 export class ProductsStore {
@@ -9,10 +13,19 @@ export class ProductsStore {
   addProduct (productData = {}) {
     const productFlyweight = this.getOrCreateFlyweight(productData.info);
 
-    // todo: add implementation
+    this.products.push({
+      model: productData.model,
+      info: productFlyweight
+    });
   }
 
   getOrCreateFlyweight (info = {}) {
-    // todo: add implementation
+    const nameKey = ("" + info.name + info.country + info.color);
+
+    if(!this.flyweights[nameKey]){
+      this.flyweights[nameKey] = new Flyweight(info);
+    }
+
+    return this.flyweights[nameKey];
   }
 }
