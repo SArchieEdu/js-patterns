@@ -1,17 +1,29 @@
 class Handler {
   name = '';
   regExp = /./;
+  nextHandler;
 
   setNext (handler) {
-    // todo: implement
+    this.nextHandler = handler;
+    return this.nextHandler;
   }
 
   next (data) {
-    // todo: implement
+    if (this.nextHandler) {
+      return this.nextHandler?.validate(data);
+    }
   }
 
   validate (data) {
-    // todo: implement
+    if (this.regExp.test(data)) {
+      /* 
+        Непонятно для чего нужно свойство next, если можно записать короче:
+        return this.nextHandler?.validate(data);
+      */
+      return this.next(data);
+    }
+
+    return `Validation rule \"${this.name}\" didn\'t pass for string \"${data}\"`;
   }
 }
 

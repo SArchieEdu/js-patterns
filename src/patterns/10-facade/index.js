@@ -1,6 +1,14 @@
 export class Game {
+  constructor() {
+    this.hero = new Hero();
+    this.location = new Location();
+  }
   start () {
-    // todo: add implementation
+    this.hero.name = 'Barbarian';
+    this.location.name = 'darkForest';
+    this.location.addMonster(new Monster('demon'));
+    this.location.addMonster(new Monster('demon'));
+    this.location.addMonster(new Monster('undead'));
   }
 }
 

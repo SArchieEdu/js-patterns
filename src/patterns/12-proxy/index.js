@@ -10,14 +10,19 @@ export class User {
 }
 
 export class ProxyUser {
+  // Не понимаю зачем здесь это свойство
   rights = [];
 
-  constructor() {
-    // todo: add implementation
+  constructor(user) {
+    this.user = user;
   }
 
   write () {
-    // todo: add implementation
+    if (this.user.rights.includes('admin')) {
+      return this.user.write();
+    }
+
+    return "user does not have permissions to write";
   }
 }
 

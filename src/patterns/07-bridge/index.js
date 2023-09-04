@@ -11,8 +11,9 @@ export class GreenColorsPallet {
 }
 
 export class Notification {
-  constructor () {
-    // todo: add implementation
+  constructor (name, pallet) {
+    this.name = name;
+    this.colorsPallet = pallet;
   }
 
   toString () {

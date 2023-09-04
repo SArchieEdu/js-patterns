@@ -1,13 +1,26 @@
 export class Milk {
   price = 2;
 
-  // todo: add implementation
+  constructor (extra) {
+    this.extra = extra;
+  }
+
+  getPrice () {
+    return this.extra ? this.extra.getPrice() + this.price : this.price;
+  }
 }
 
 export class Sugar {
   price = 1;
 
-  // todo: add implementation
+  // Смущает что получилось два одинаковых решения для Milk и для Sugar
+  constructor (extra) {
+    this.extra = extra;
+  }
+
+  getPrice () {
+    return this.extra ? this.extra.getPrice() + this.price : this.price;
+  }
 }
 
 export class Coffee {

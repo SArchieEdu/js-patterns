@@ -5,18 +5,36 @@ export class ErrorNotification {}
 
 export class SuccessControl {
   create (type = '') {
-    // todo: implement logic
+    if (type === 'button') {
+      return new SuccessButton();
+    }
+
+    if (type === 'notification') {
+      return new SuccessNotification();
+    }
   }
 }
 
 export class ErrorControl {
   create (type = '') {
-    // todo: implement logic
+    if (type === 'button') {
+      return new ErrorButton();
+    }
+
+    if (type === 'notification') {
+      return new ErrorNotification();
+    }
   }
 }
 
 export default class ControlsFactory {
   getFactory (factoryType = '') {
-    // todo: implement logic
+    if (factoryType === 'success') {
+      return new SuccessControl();
+    }
+
+    if (factoryType === 'error') {
+      return new ErrorControl();
+    }
   }
 }

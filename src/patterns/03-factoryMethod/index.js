@@ -7,17 +7,29 @@ class Input {
 }
 
 export class TextInput extends Input {
-  // todo: implement logic
+  static create() {
+    return new TextInput();
+  }
 }
 
 export class NumberInput extends Input {
-  // todo: implement logic
+  static create() {
+    return new NumberInput();
+  }
 }
 
 export class EmailInput extends Input {
-  // todo: implement logic
+  static create() {
+    return new EmailInput();
+  }
 }
 
 export const inputFactory = (type = '') => {
-  // todo: implement logic
+  const inputs = {
+    text: TextInput,
+    number: NumberInput,
+    email: EmailInput,
+  }
+ 
+  return inputs[type].create();
 };
